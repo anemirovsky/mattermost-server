@@ -70,7 +70,18 @@ func (th *SearchTestHelper) SetupBasicFixtures() error {
 		return err
 	}
 
+	err = th.addUserToTeams(user2, []string{team.Id, anotherTeam.Id})
+	if err != nil {
+		return err
+	}
+
 	err = th.addUserToChannels(user, []string{channelBasic.Id, channelPrivate.Id,
+		channelAnotherTeam.Id, channelDeleted.Id})
+	if err != nil {
+		return err
+	}
+
+	err = th.addUserToChannels(user2, []string{channelPrivate.Id,
 		channelAnotherTeam.Id, channelDeleted.Id})
 	if err != nil {
 		return err
